@@ -51,10 +51,10 @@ public class Demo
                 )
                 .UseLayouter<CircularCloudLayouterFactory, CircularCloudLayouterConfig>(
                     new CircularCloudLayouterConfig
-                {
-                    SpiralStep = 0.5,
-                    InitialRadius = 100
-                })
+                    {
+                        SpiralStep = 0.5,
+                        InitialRadius = 100
+                    })
                 .UseRenderer<Renderer, RendererConfig>(new RendererConfig
                     {
                         BackgroundColor = new Color(200, 200, 255),
@@ -64,8 +64,7 @@ public class Demo
                 )
                 .UseImageEncoder<PngEncoder>())
             .Then(r => r.FromString(GenerateRandomString(count)))
-            .Then(imageBytes => File.WriteAllBytes($"results/random_cloud_{count}.png", imageBytes))
-            .OnFail(error => Console.WriteLine($"Failed to generate cloud with {count} words: {error}"));
+            .Then(imageBytes => File.WriteAllBytes($"results/random_cloud_{count}.png", imageBytes));
     }
 
     private static string GenerateRandomString(int count)
