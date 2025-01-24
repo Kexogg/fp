@@ -14,6 +14,6 @@ public class CircularCloudLayouterFactory : ILayouterFactory<CircularCloudLayout
 
     public Result<ILayouter> Create()
     {
-        return Result.Ok<ILayouter>(new CircularCloudLayouter(Config, _fontManager));
+        return Result.Of<ILayouter>(() => new CircularCloudLayouter(Config, _fontManager));
     }
 }

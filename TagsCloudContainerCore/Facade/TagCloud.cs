@@ -50,6 +50,8 @@ public class TagCloud : ITagCloud
     private Result<byte[]> ProcessString(string data)
     {
         var layouter = _layouterFactory.Create();
+        if (!layouter.IsSuccess)
+            return Result.Fail<byte[]>(layouter.Error);
         return _textProcessor.ProcessText(data)
             .Then(layouter.Value.LayoutTags)
             .Then(_renderer.DrawTags)
